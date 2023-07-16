@@ -12,7 +12,7 @@ Getting started
 2. Clone this repository, Open the terminal and navigate to the downloaded repository folder
 
 **To Execute UI Tests:**
-1. Paste the command "gradle clean test -Dtest.suite=uiTests.xml"
+1. Run src/test/resources/uiTests.xml"
 
 **To Execute Development :**
-1. Paste the command "gradle clean test -Dtest.suite=development.xml"
+1. Run src/test/resources/development.xml"
