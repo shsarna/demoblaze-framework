@@ -1,3 +1,5 @@
+package utils;
+
 public class Constants {
     public static final String iPhone6_32GB = "Iphone 6 32gb";
     public static final String asus_fullHD_monitor = "ASUS Full HD";

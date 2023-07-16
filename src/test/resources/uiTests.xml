@@ -4,7 +4,7 @@
     <test name="Automation test for Evaluation">
           <parameter name="browser" value="chrome">
               <classes>
-                  <class name="AssignmentTest"/>
+                  <class name="UI_Tests"/>
               </classes>
           </parameter>
     </test>

@@ -1,9 +1,10 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.BaseTest;
+import utils.Constants;
 import utils.SeleniumUtils;
 
-public class AssignmentTest extends BaseTest {
+public class UI_Tests extends BaseTest {
 
     public void signIn(){
         homePage.clickLoginButton();
@@ -11,7 +12,7 @@ public class AssignmentTest extends BaseTest {
     }
 
     @Test
-    public void scenario2() throws InterruptedException {
+    public void uiTestScenario() throws InterruptedException {
         signIn();
         driver.navigate().refresh();
         homePage.selectProductByText(Constants.iPhone6_32GB);
