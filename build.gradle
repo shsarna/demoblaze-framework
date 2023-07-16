@@ -1,0 +1,55 @@
+plugins {
+    id 'java-library'
+}
+
+ext {
+    suiteFile = System.getProperty("test.suite")
+    if (suiteFile == null) {
+        suiteFile = "suite.xml"
+    }
+}
+
+group = 'com.sharuti'
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation "org.seleniumhq.selenium:selenium-java:$seleniumjavaVersion"
+    implementation "io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion"
+    implementation "org.testng:testng:$testngVersion"
+    testImplementation "org.testng:testng:$testngVersion"
+    testRuntimeOnly "org.testng:testng:$testngVersion"
+}
+
+//Test
+test {
+    useTestNG() {
+        suites "src/test/resources/${suiteFile}"
+    }
+    jvmArgs += ['-Xmx4096m']
+    System.setProperty("file.encoding", "utf-8")
+    jvmArgs += ['--add-opens', 'java.base/jdk.internal.loader=ALL-UNNAMED']
+    systemProperties = System.properties
+    // enable console logging of test results
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+
+    //Show full exception on failure
+    testLogging {
+        exceptionFormat = 'full'
+    }
+
+    //Convenience .. pipe all test results to SDOUT
+    afterTest { desc, result ->
+        println "${desc.className} ${desc.name} ${result.resultType}"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
